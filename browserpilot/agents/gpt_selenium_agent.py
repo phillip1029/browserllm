@@ -111,6 +111,7 @@ class GPTSeleniumAgent:
         self.instruction_compiler = InstructionCompiler(
             instructions=instructions,
             model=self.model_for_instructions,
+            disable_danger_check = self.disable_danger_check,
         )
 
         """Set up the memory."""
@@ -150,7 +151,10 @@ class GPTSeleniumAgent:
 
     def _check_danger(self, action_str):
         """Check that the action is not dangerous. If so, just quit."""
-        if (self.disable_danger_check is False and self._is_potentially_dangerous(action_str)):
+        if (self.disable_danger_check is True):
+            logger.warning("Code Danger checking is disabled")
+            return
+        if (self._is_potentially_dangerous(action_str)):
             logger.warning("Action is potentially dangerous. Exiting.")
             logger.warning(f"Action: {action_str}")
             sys.exit(1)
