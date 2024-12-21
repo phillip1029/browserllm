@@ -84,6 +84,8 @@ class GPTSeleniumAgent:
                 instructions should be saved.
             close_after_completion (bool): Whether to close the browser after
                 the instructions have been executed.
+            remote_url (str): URL of the Selenium Grid target.
+            disable_danger_check (bool): Whether to disable the danger check.
         """
         """Helpful instance variables."""
         assert (
@@ -111,7 +113,6 @@ class GPTSeleniumAgent:
         self.instruction_compiler = InstructionCompiler(
             instructions=instructions,
             model=self.model_for_instructions,
-            disable_danger_check = self.disable_danger_check,
         )
 
         """Set up the memory."""
@@ -152,7 +153,7 @@ class GPTSeleniumAgent:
     def _check_danger(self, action_str):
         """Check that the action is not dangerous. If so, just quit."""
         if (self.disable_danger_check is True):
-            logger.warning("Code Danger checking is disabled")
+            logger.warning("Caution! We are not checking for dangerous actions returned by the LLM.")
             return
         if (self._is_potentially_dangerous(action_str)):
             logger.warning("Action is potentially dangerous. Exiting.")

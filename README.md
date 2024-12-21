@@ -164,9 +164,9 @@ This repo was inspired by the work of [Yihui He](https://github.com/yihui-he/Act
 - Demo/test something where it has to ask the LLM to synthesize something it reads online.
 - 🚨 Figured out how to feed the content of the HTML page into the GPT-3 context window and have it reliably pick out specific elements from it, that would be great!
 
-## 🚨 Disclaimer 🚨
+## 🚨 Disclaimer 
 
-This package runs code output from the OpenAI API in Python using `exec`. 🚨 **This is not considered a safe convention** 🚨. Accordingly, you should be extra careful when using this package. The standard disclaimer follows.
+This package runs code output from the OpenAI API in Python using `exec`. **This is not considered a safe convention**. Accordingly, you should be extra careful when using this package. The standard disclaimer follows.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 

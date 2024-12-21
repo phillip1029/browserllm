@@ -87,7 +87,6 @@ class InstructionCompiler:
         base_prompt=BASE_PROMPT,
         model="gpt-4o-mini",
         use_compiled=True,
-        disable_danger_check=False,
     ):
         """Initialize the compiler. The compiler handles the sequencing of
         each set of instructions which are injected into the base prompt.
@@ -126,7 +125,6 @@ class InstructionCompiler:
         self.functions = {}  # Set in _parse_instructions_into_queue.
         self.finished_instructions = []
         self.history = []  # Keep track of the history of actions.
-        self.disable_danger_check = disable_danger_check
 
         # Set the instructions.
         self.instructions = instructions  # Overriden in set_instructions.
@@ -339,9 +337,6 @@ class InstructionCompiler:
         prompt = self.base_prompt.format(instructions=instructions)
         completion = self.get_completion(prompt).strip()
         action_output = completion.strip()
-        print(self.disable_danger_check)
-        lines = [line for line in action_output.split("\n") if (self.disable_danger_check is False or not line.startswith("import "))]
-        action_output = "\n".join(lines)
         return {
             "instruction": instructions,
             "action_output": action_output,
