@@ -1,4 +1,7 @@
 """InstructionCompiler class."""
+from dotenv import load_dotenv
+load_dotenv()
+
 import time
 import json
 import yaml
@@ -15,8 +18,9 @@ from openai import RateLimitError, Timeout, APIError, APIConnectionError, OpenAI
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
 # Instantiate OpenAI with OPENAI_API_KEY.
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 """Set up all the prompt variables."""
 
